@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,6 +20,10 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qwG-un-c8o">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XOM-xg-Kmk" appends="YES" id="jiV-ZA-oPA"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -33,9 +38,17 @@
                     <connections>
                         <outlet property="mapView" destination="qwG-un-c8o" id="YUt-oP-hxf"/>
                         <segue destination="WWb-zc-qRl" kind="show" identifier="Show Image" id="FWd-l7-oKG"/>
+                        <segue destination="XQq-zm-esz" kind="popoverPresentation" identifier="Edit Waypoint" popoverAnchorView="qwG-un-c8o" id="1oS-Me-wlQ">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="XOM-xg-Kmk">
+                    <connections>
+                        <action selector="addWaypoint:" destination="BYZ-38-t0r" id="D5x-IT-1rx"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1374" y="357"/>
         </scene>
@@ -54,17 +67,18 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmu-aZ-u2b">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bjS-CH-efb">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bjS-CH-efb">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bjS-CH-efb" firstAttribute="centerX" secondItem="bhS-we-R6E" secondAttribute="centerX" id="7qZ-Yh-6Uj"/>
-                            <constraint firstItem="fmu-aZ-u2b" firstAttribute="top" secondItem="bhS-we-R6E" secondAttribute="top" id="Lsz-Q2-IhR"/>
-                            <constraint firstItem="fmu-aZ-u2b" firstAttribute="bottom" secondItem="6ta-80-k8l" secondAttribute="top" id="MSm-2m-oWi"/>
-                            <constraint firstItem="fmu-aZ-u2b" firstAttribute="leading" secondItem="bhS-we-R6E" secondAttribute="leading" id="RyW-S5-Yyk"/>
-                            <constraint firstAttribute="trailing" secondItem="fmu-aZ-u2b" secondAttribute="trailing" id="VqW-iN-R25"/>
+                            <constraint firstAttribute="trailing" secondItem="fmu-aZ-u2b" secondAttribute="trailing" id="0dA-u8-1r2"/>
+                            <constraint firstItem="fmu-aZ-u2b" firstAttribute="centerX" secondItem="bjS-CH-efb" secondAttribute="centerX" id="TH9-r7-IfB"/>
+                            <constraint firstItem="fmu-aZ-u2b" firstAttribute="leading" secondItem="bhS-we-R6E" secondAttribute="leading" id="Wn1-NK-fZW"/>
+                            <constraint firstItem="fmu-aZ-u2b" firstAttribute="bottom" secondItem="6ta-80-k8l" secondAttribute="top" id="hpa-7t-5jV"/>
+                            <constraint firstItem="fmu-aZ-u2b" firstAttribute="centerY" secondItem="bjS-CH-efb" secondAttribute="centerY" id="hrj-Zf-xfk"/>
+                            <constraint firstItem="fmu-aZ-u2b" firstAttribute="top" secondItem="bhS-we-R6E" secondAttribute="top" id="z9F-4h-E4S"/>
                         </constraints>
                     </view>
                     <connections>
@@ -93,6 +107,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4w-vd-NQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="562" y="357"/>
+        </scene>
+        <!--Edit Waypoint-->
+        <scene sceneID="vqQ-8W-mx6">
+            <objects>
+                <viewController id="XQq-zm-esz" customClass="EditWaypointViewController" customModule="Trax" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9lU-NL-uBh"/>
+                        <viewControllerLayoutGuide type="bottom" id="ujf-hc-QYN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UN2-bu-LwH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="brJ-qd-snm">
+                                <rect key="frame" x="70" y="28" width="510" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uKS-OH-hT6">
+                                <rect key="frame" x="70" y="66" width="510" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ods-Kk-grP">
+                                <rect key="frame" x="33" y="69" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScW-a0-v4u">
+                                <rect key="frame" x="17" y="31" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="ScW-a0-v4u" firstAttribute="baseline" secondItem="brJ-qd-snm" secondAttribute="baseline" id="7UK-rV-bCT"/>
+                            <constraint firstItem="uKS-OH-hT6" firstAttribute="leading" secondItem="Ods-Kk-grP" secondAttribute="trailing" constant="8" symbolic="YES" id="7i6-6w-2Xf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uKS-OH-hT6" secondAttribute="trailing" id="FWt-hN-7Ug"/>
+                            <constraint firstItem="Ods-Kk-grP" firstAttribute="baseline" secondItem="uKS-OH-hT6" secondAttribute="baseline" id="MRB-1d-FK1"/>
+                            <constraint firstItem="ScW-a0-v4u" firstAttribute="leading" secondItem="UN2-bu-LwH" secondAttribute="leadingMargin" constant="-3" id="Wk5-eM-JOc"/>
+                            <constraint firstItem="uKS-OH-hT6" firstAttribute="width" secondItem="brJ-qd-snm" secondAttribute="width" id="dJT-QX-Rep"/>
+                            <constraint firstItem="brJ-qd-snm" firstAttribute="leading" secondItem="ScW-a0-v4u" secondAttribute="trailing" constant="8" id="e1P-Dc-ODF"/>
+                            <constraint firstItem="ujf-hc-QYN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uKS-OH-hT6" secondAttribute="bottom" constant="8" symbolic="YES" id="eqe-fL-GaJ"/>
+                            <constraint firstItem="uKS-OH-hT6" firstAttribute="top" secondItem="brJ-qd-snm" secondAttribute="bottom" constant="8" symbolic="YES" id="pOk-A9-1T7"/>
+                            <constraint firstItem="brJ-qd-snm" firstAttribute="top" secondItem="9lU-NL-uBh" secondAttribute="bottom" constant="8" id="r8D-sA-CeR"/>
+                            <constraint firstItem="Ods-Kk-grP" firstAttribute="leading" secondItem="UN2-bu-LwH" secondAttribute="leadingMargin" constant="13" id="rak-Vk-6zm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="brJ-qd-snm" secondAttribute="trailing" id="y6Y-pH-fvb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Waypoint" id="dxb-xo-NtA">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="fnv-un-vD0">
+                            <connections>
+                                <action selector="done:" destination="XQq-zm-esz" id="gfO-Jq-8Y7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="infoTextField" destination="uKS-OH-hT6" id="Rbs-Ta-UN0"/>
+                        <outlet property="nameTextField" destination="brJ-qd-snm" id="4TP-ru-YLl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M8w-cT-gQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2096" y="-380"/>
         </scene>
     </scenes>
 </document>
