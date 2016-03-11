@@ -158,8 +158,6 @@ class GPX: NSObject, NSXMLParserDelegate
     private var track: Track?
     private var link: Link?
     
-    //func parser(parser: NSXMLParser, didStartElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!, attributes attributeDict: [NSObject : AnyObject]!) {
-
    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
         switch elementName {
