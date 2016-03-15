@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Eeh-7X-8g4"; */
+"Eeh-7X-8g4.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Info"; ObjectID = "Ods-Kk-grP"; */
+"Ods-Kk-grP.text" = "Info";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "ScW-a0-v4u"; */
+"ScW-a0-v4u.text" = "Name";
+
+/* Class = "UINavigationItem"; title = "Edit Waypoint"; ObjectID = "dxb-xo-NtA"; */
+"dxb-xo-NtA.title" = "Edit Waypoint";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "fnv-un-vD0"; */
+"fnv-un-vD0.title" = "Done";

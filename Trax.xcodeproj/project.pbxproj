@@ -42,6 +42,8 @@
 		F271DD471C91CB340013734A /* GPX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPX.swift; path = ../GPX.swift; sourceTree = "<group>"; };
 		F271DD491C92139A0013734A /* MKGPX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKGPX.swift; sourceTree = "<group>"; };
 		F271DD4B1C9244140013734A /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		F2A245D51C975C180055C9A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		F2A245D61C975C180055C9A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F2ED12BA1C906B1C00A1B651 /* Trax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2ED12BD1C906B1C00A1B651 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2ED12BF1C906B1C00A1B651 /* GPXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F2ED12C21C906B1C00A1B651 /* Base */,
+				F2A245D51C975C180055C9A3 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F2ED12C71C906B1C00A1B651 /* Base */,
+				F2A245D61C975C180055C9A3 /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
